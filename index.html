@@ -3,282 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VortexLab | Исследовательский архив</title>
+    <title>VortexLab | Исследование торнадо</title>
     <style>
         :root {
-            --bg: #0a0a0b;
-            --panel: #141416;
-            --neon-blue: #00d9ff;
-            --neon-purple: #bd00ff;
-            --text: #d1d1d1;
-            --header-text: #ffffff;
-            --border: #2a2a2e;
+            --bg: #0a0a0a;
+            --card-bg: #141414;
+            --neon-blue: #00f2ff;
+            --neon-pink: #ff00ea;
+            --text: #e0e0e0;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Helvetica, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            margin: 0;
             padding: 20px;
+            line-height: 1.6;
         }
 
-        .container { max-width: 850px; margin: 0 auto; }
-
-        /* ВИЗУАЛЬНАЯ РАЗМЕТКА РАЗДЕЛОВ */
-        .section-tag {
-            font-family: monospace;
-            color: var(--neon-blue);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 40px 0;
-        }
+        .container { max-width: 900px; margin: 0 auto; }
 
         header {
-            padding: 60px 0;
+            text-align: center;
+            padding: 40px 0;
             border-bottom: 2px solid var(--neon-blue);
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            color: #fff;
+            margin: 0;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--header-text);
         }
 
         h1 span { color: var(--neon-blue); }
 
+        section { margin-bottom: 50px; }
+
         h2 {
-            font-size: 1.6rem;
-            color: var(--header-text);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
+            color: var(--neon-pink);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        h2::before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            background: var(--neon-purple);
-            margin-right: 15px;
-            display: inline-block;
-        }
-
-        p { margin-bottom: 20px; font-size: 1rem; text-align: justify; }
-        
-        /* Научное выделение */
+        /* Выделение основного */
         u {
             text-decoration: none;
-            border-bottom: 1px solid var(--neon-blue);
+            border-bottom: 2px solid var(--neon-blue);
             color: #fff;
         }
 
-        .data-card {
-            background: var(--panel);
-            padding: 30px;
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            margin-bottom: 40px;
-        }
-
-        /* КАРТОЧКИ ОБЪЕКТОВ */
-        .observation-unit {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            margin-bottom: 50px;
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 10px;
+            margin-bottom: 30px;
             overflow: hidden;
         }
 
-        .visual-data {
+        .card img {
             width: 100%;
-            height: 350px;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--neon-blue);
         }
 
-        .visual-data img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-            width: 100%;
+        .card-content { padding: 25px; }
+
+        .card-content h3 {
+            margin: 0 0 15px 0;
+            color: var(--neon-blue);
+            font-size: 1.3rem;
         }
 
-        .unit-details { padding: 30px; }
-
-        .unit-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-        }
-
-        .unit-header h3 { font-size: 1.4rem; color: var(--neon-blue); }
-
-        .class-label {
-            font-family: monospace;
-            background: rgba(189, 0, 255, 0.2);
-            color: var(--neon-purple);
-            padding: 2px 10px;
-            border: 1px solid var(--neon-purple);
-            font-size: 0.85rem;
-        }
-
-        .params-grid {
+        .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
-            margin-top: 25px;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
         }
 
-        .param-item { font-size: 0.9rem; }
-        .param-label { color: #666; display: block; font-size: 0.75rem; text-transform: uppercase; }
-        .param-value { color: var(--header-text); font-weight: 600; }
+        .stat-item b { color: var(--neon-pink); display: block; }
 
         footer {
             text-align: center;
-            padding: 40px 0;
-            color: #555;
-            font-family: monospace;
-            font-size: 0.8rem;
+            padding: 40px;
+            color: #444;
+            font-size: 0.9rem;
         }
-
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <span class="section-tag">[ METEOROLOGICAL DATA ARCHIVE ]</span>
-        <h1>Vortex<span>Lab</span></h1>
-        <p style="color: #666; margin-top: 5px;">Аналитическая база данных атмосферных явлений высокой интенсивности</p>
+        <h1>VORTEX<span>LAB</span></h1>
     </header>
 
     <section>
-        <span class="section-tag">SECTION_01</span>
-        <h2>Механика формирования мезоциклона</h2>
-        <div class="data-card">
-            <p>Генезис торнадо представляет собой сложный процесс взаимодействия <u>вертикальных и горизонтальных векторов ветра</u>. В основе явления лежит возникновение <u>мезоциклона</u> — вращающегося восходящего потока в рамках суперъячейки.</p>
-            <p>Критическими параметрами являются <u>атмосферная нестабильность</u> (CAPE) и <u>вертикальный сдвиг ветра</u>. При достижении критических значений кинетическая энергия переходит в ротационную форму, образуя <u>конденсационную воронку</u>. Контакт данной воронки с подстилающей поверхностью классифицирует явление как завершенное.</p>
-        </div>
+        <h2>Физические основы</h2>
+        <p>Торнадо образуется при возникновении <u>вертикального градиента температур</u> и сильного <u>сдвига ветра</u>. Ключевым этапом является формирование <u>мезоциклона</u> — вращающегося объема воздуха внутри грозового облака. Когда восходящий поток сужается и ускоряется, воронка опускается к земле, образуя полноценный торнадо.</p>
     </section>
 
-    <hr>
-
     <section>
-        <span class="section-tag">SECTION_02</span>
-        <h2>Методология оценки (Шкала EF)</h2>
-        <p>Для определения интенсивности явлений применяется <u>Улучшенная шкала Фудзиты</u>. Оценка базируется на <u>анализе повреждений</u> 28 различных индикаторов (здания, растительность, техника).</p>
-        
-        <div class="params-grid" style="background: var(--panel); border: 1px solid var(--border);">
-            <div class="param-item"><span class="param-value">EF0 - EF1</span><span class="param-label">Слабый / Умеренный (105-177 км/ч)</span></div>
-            <div class="param-item"><span class="param-value">EF2 - EF3</span><span class="param-label">Значительный / Сильный (178-266 км/ч)</span></div>
-            <div class="param-item"><span class="param-value">EF4 - EF5</span><span class="param-label">Разрушительный / Невероятный (>267 км/ч)</span></div>
-        </div>
+        <h2>Классификация по шкале EF</h2>
+        <p>Сила торнадо оценивается по <u>Улучшенной шкале Фудзиты</u>, исходя из нанесенного ущерба:</p>
+        <ul>
+            <li><u>EF0 - EF1</u>: Слабые повреждения, скорость до 177 км/ч.</li>
+            <li><u>EF2 - EF3</u>: Значительный ущерб, срыв крыш, скорость до 266 км/ч.</li>
+            <li><u>EF4 - EF5</u>: Полное разрушение строений, скорость свыше 267 км/ч.</li>
+        </ul>
     </section>
 
-    <hr>
-
     <section>
-        <span class="section-tag">SECTION_03</span>
-        <h2>Реестр исторических аномалий</h2>
+        <h2>Реестр экстремальных явлений</h2>
 
-        <div class="observation-unit">
-            <div class="visual-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/El_Reno_Tornado_31_May_2013.jpg" alt="El Reno Radar Visualization">
-            </div>
-            <div class="unit-details">
-                <div class="unit-header"><h3>El Reno (Оклахома, 2013)</h3><span class="class-label">RECORD_WIDTH</span></div>
-                <p>Объект зафиксирован как <u>крупнейший по диаметру воронки</u> в истории наблюдений. Геометрическая ширина составила <u>4.2 км</u>. Сложная внутренняя динамика включала в себя <u>множественные суб-вихри</u>, скорость которых значительно превышала скорость вращения основной воронки.</p>
-                <div class="params-grid">
-                    <div class="param-item"><span class="param-label">Макс. ширина</span><span class="param-value">4.2 км</span></div>
-                    <div class="param-item"><span class="param-label">Скорость ветра</span><span class="param-value">484 км/ч (DOW)</span></div>
-                    <div class="param-item"><span class="param-label">Категория</span><span class="param-value">EF3</span></div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/El_Reno_Tornado_31_May_2013.jpg" alt="El Reno Tornado">
+            <div class="card-content">
+                <h3>Эль-Рино (2013) — Самый широкий</h3>
+                <p>Торнадо в Эль-Рино официально признан <u>крупнейшим в истории</u>. Его максимальная ширина достигла <u>4.2 км</u>. Внутри основной воронки наблюдались многочисленные <u>суб-вихри</u>, двигавшиеся с огромной скоростью.</p>
+                <div class="stats">
+                    <div class="stat-item">Ширина: <b>4.2 км</b></div>
+                    <div class="stat-item">Скорость: <b>484 км/ч</b></div>
+                    <div class="stat-item">Категория: <b>EF3</b></div>
                 </div>
             </div>
         </div>
 
-        <div class="observation-unit">
-            <div class="visual-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Tri-State_Tornado_track.png/1024px-Tri-State_Tornado_track.png" alt="Tri-State Track Data">
-            </div>
-            <div class="unit-details">
-                <div class="unit-header"><h3>Tri-State (Миссури-Индиана, 1925)</h3><span class="class-label">MAX_DURATION</span></div>
-                <p>Данное событие характеризуется <u>аномальной продолжительностью жизни</u> вихря. Торнадо удерживал контакт с поверхностью на протяжении <u>352 км</u>. Высокая скорость перемещения (117 км/ч) классифицирует его как один из самых опасных объектов в истории метеорологии.</p>
-                <div class="params-grid">
-                    <div class="param-item"><span class="param-label">Дистанция пути</span><span class="param-value">352 км</span></div>
-                    <div class="param-item"><span class="param-label">Время активности</span><span class="param-value">219 мин</span></div>
-                    <div class="param-item"><span class="param-label">Летальность</span><span class="param-value">695 ед.</span></div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/F5_tornado_May_3_1999.jpg" alt="Bridge Creek-Moore Tornado">
+            <div class="card-content">
+                <h3>Бридж-Крик (1999) — Максимальная скорость</h3>
+                <p>В ходе этого события была зафиксирована <u>высочайшая скорость ветра</u> у поверхности Земли — <u>512 км/ч</u>. Торнадо полностью стер с лица земли несколько населенных пунктов, продемонстрировав предел мощности категории EF5.</p>
+                <div class="stats">
+                    <div class="stat-item">Скорость ветра: <b>512 км/ч</b></div>
+                    <div class="stat-item">Тип: <b>Клиновидный</b></div>
+                    <div class="stat-item">Категория: <b>EF5</b></div>
                 </div>
             </div>
         </div>
 
-        <div class="observation-unit">
-            <div class="visual-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/F5_tornado_May_3_1999.jpg" alt="Bridge Creek Visual">
-            </div>
-            <div class="unit-details">
-                <div class="unit-header"><h3>Bridge Creek-Moore (1999)</h3><span class="class-label">MAX_VELOCITY</span></div>
-                <p>Зафиксированы <u>экстремальные показатели скорости</u> воздушных масс. Использование доплеровского радара позволило установить значение <u>512 км/ч</u>. Структурные повреждения в эпицентре соответствовали уровню <u>полной аннигиляции</u> наземных объектов.</p>
-                <div class="params-grid">
-                    <div class="param-item"><span class="param-label">Пиковая скорость</span><span class="param-value">512 км/ч</span></div>
-                    <div class="param-item"><span class="param-label">Энергия</span><span class="param-value">Критическая</span></div>
-                    <div class="param-item"><span class="param-label">Индекс</span><span class="param-value">F5</span></div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Tri-State_Tornado_track.png/1024px-Tri-State_Tornado_track.png" alt="Tri-State Path">
+            <div class="card-content">
+                <h3>Три-Стейт (1925) — Самая длинная траектория</h3>
+                <p>Этот торнадо удерживал контакт с землей в течение <u>3.5 часов</u>, пройдя путь в <u>352 км</u> через три штата. Это абсолютный рекорд <u>непрерывного существования</u> одиночного вихря.</p>
+                <div class="stats">
+                    <div class="stat-item">Путь: <b>352 км</b></div>
+                    <div class="stat-item">Время жизни: <b>219 мин</b></div>
+                    <div class="stat-item">Жертвы: <b>695</b></div>
                 </div>
             </div>
         </div>
 
-        <div class="observation-unit">
-            <div class="visual-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Tornado_in_Bangladesh.jpg/800px-Tornado_in_Bangladesh.jpg" alt="Saturia Event Impact">
-            </div>
-            <div class="unit-details">
-                <div class="unit-header"><h3>Daulatpur–Saturia (Бангладеш, 1989)</h3><span class="class-label">MAX_FATALITIES</span></div>
-                <p>Объект классифицирован как <u>самый смертоносный</u> в мировой практике. Сочетание высокой плотности населения и отсутствия защитных инженерных сооружений привело к катастрофическим последствиям. <u>1300 летальных исходов</u> задокументировано официально.</p>
-                <div class="params-grid">
-                    <div class="param-item"><span class="param-label">Регион воздействия</span><span class="param-value">Бангладеш</span></div>
-                    <div class="param-item"><span class="param-label">Число пострадавших</span><span class="param-value">~12 000</span></div>
-                    <div class="param-item"><span class="param-label">Статус</span><span class="param-value">Катастрофа</span></div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Tornado_in_Bangladesh.jpg/800px-Tornado_in_Bangladesh.jpg" alt="Bangladesh Tornado">
+            <div class="card-content">
+                <h3>Бангладеш (1989) — Самый смертоносный</h3>
+                <p>Из-за отсутствия систем оповещения торнадо в районе Даулатпур-Сатурия стал <u>самым трагичным</u>. Погибло около <u>1300 человек</u>, а более 80 тысяч остались без крова.</p>
+                <div class="stats">
+                    <div class="stat-item">Жертвы: <b>~1300</b></div>
+                    <div class="stat-item">Район: <b>Сатурия</b></div>
+                    <div class="stat-item">Статус: <b>Катастрофа</b></div>
                 </div>
             </div>
         </div>
 
-        <div class="observation-unit">
-            <div class="visual-data">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Joplin_tornado_May_22_2011.jpg" alt="Joplin EF5 Documentation">
-            </div>
-            <div class="unit-details">
-                <div class="unit-header"><h3>Joplin (Миссури, 2011)</h3><span class="class-label">MAX_DAMAGE_COST</span></div>
-                <p>Событие продемонстрировало <u>максимальный экономический ущерб</u> в истории наблюдений ($2.8 млрд). Вихрь категории <u>EF5</u> прошел через центральные районы города, уничтожив критически важную инфраструктуру, включая медицинские центры.</p>
-                <div class="params-grid">
-                    <div class="param-item"><span class="param-label">Экон. ущерб</span><span class="param-value">$2.8 млрд</span></div>
-                    <div class="param-item"><span class="param-label">Ширина следа</span><span class="param-value">1.6 км</span></div>
-                    <div class="param-item"><span class="param-label">Уровень</span><span class="param-value">EF5</span></div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Joplin_tornado_May_22_2011.jpg" alt="Joplin Damage">
+            <div class="card-content">
+                <h3>Джоплин (2011) — Самый дорогостоящий</h3>
+                <p>Этот торнадо нанес <u>рекордный экономический ущерб</u> в размере <u>2.8 млрд долларов</u>. Он прошел через центр города, уничтожив более 7000 зданий и современный госпиталь.</p>
+                <div class="stats">
+                    <div class="stat-item">Ущерб: <b>$2.8 млрд</b></div>
+                    <div class="stat-item">Ширина следа: <b>1.6 км</b></div>
+                    <div class="stat-item">Категория: <b>EF5</b></div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>TERMINAL SYSTEM // DATA PROVIDED BY VORTEXLAB ARCHIVE // 2026</p>
+        VORTEXLAB RESEARCH &copy; 2026
     </footer>
 </div>
 
