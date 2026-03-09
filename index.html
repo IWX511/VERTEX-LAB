@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VortexLab | Исследование Экстремальных Вихрей</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-panel: #161616;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --neon-cyan: #00ffff;
+            --neon-magenta: #ff00ff;
+            --shadow-neon: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: white;
+            text-shadow: var(--shadow-neon);
+        }
+
+        h1 span { color: var(--neon-cyan); }
+
+        header p { color: var(--text-muted); margin-top: 10px; font-size: 1.1em; }
+
+        /* SECTIONS */
+        section { margin-bottom: 50px; }
+
+        h2 {
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--neon-magenta);
+            padding-left: 15px;
+        }
+
+        /* TEXT STYLES */
+        p { margin-bottom: 15px; color: var(--text-main); }
+        .highlight { border-bottom: 2px solid var(--neon-cyan); font-weight: 600; color: white; }
+        .muted { color: var(--text-muted); font-size: 0.9em; }
+
+        /* CARDS & PANELS */
+        .info-card {
+            background-color: var(--bg-panel);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 20px;
+        }
+
+        /* TORNADO LIST */
+        .tornado-item {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-panel);
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tornado-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border-color: var(--neon-cyan);
+        }
+
+        .tornado-image {
+            width: 100%;
+            height: 250px;
+            background-color: #333;
+            background-image: repeating-linear-gradient(45deg, #2b2b2b, #2b2b2b 10px, #333 10px, #333 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9em;
+            position: relative;
+        }
+
+        /* Имитация картинки (замени на реальные URL) */
+        .tornado-image::after {
+            content: "ФОТО ТОРНАДО (ЗАМЕНИТЬ URL)";
+            position: absolute;
+        }
+
+        .tornado-content { padding: 25px; }
+
+        .tornado-title {
+            font-size: 1.5em;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tornado-rating {
+            background-color: var(--neon-magenta);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .tornado-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .stat-box { font-size: 0.9em; }
+        .stat-label { color: var(--text-muted); display: block; }
+        .stat-value { color: white; font-weight: 600; }
+
+        /* ADAPTIVE */
+        @media (min-width: 600px) {
+            .tornado-item { flex-direction: row; }
+            .tornado-image { width: 40%; height: auto; }
+            .tornado-content { width: 60%; }
+            .tornado-stats { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Vortex<span>Lab</span></h1>
+        <p>Центр прикладных атмосферных исследований</p>
+    </header>
+
+    <section id="about">
+        <h2>О Проекте</h2>
+        <div class="info-card">
+            <p>Добро пожаловать в VortexLab. Мы занимаемся комплексным <span class="highlight">изучением физики экстремальных вихрей</span> и разработкой систем для их моделирования. Проект объединяет аналитику исторических данных и практические эксперименты.</p>
+            <p>В рамках <span class="highlight">версии v0.0.1</span> мы фокусируемся на оптимизации динамики воздушных потоков в симуляционном боксе и подготовке к запуску первой мульти-вихревой установки.</p>
+        </div>
+    </section>
+
+    <section id="physics">
+        <h2>Физика Торнадо</h2>
+        <div class="info-card">
+            <p>Торнадо — это вертикальный вихрь, <span class="highlight">соединяющий грозовое облако с поверхностью</span> Земли. Его генезис требует уникального сочетания условий.</p>
+            <p>Для формирования <span class="highlight">суперъячейки</span> (мощнейшего типа грозы) необходимы: <span class="highlight">нестабильность атмосферы</span> (быстрое падение температуры с высотой) и сильный <span class="highlight">сдвиг ветра</span> (изменение скорости и направления ветра с высотой).</p>
+            <p>Эти факторы создают горизонтальное вращение, которое затем <span class="highlight">подхватывается восходящим потоком</span> и превращается в вертикальный мезоциклон. Из него, при наличии сильного оттока воздуха, <span class="highlight">опускается воронка</span>.</p>
+        </div>
+    </section>
+
+    <section id="records">
+        <h2>Реестр Крупнейших Вихрей</h2>
+
+        <div class="tornado-item">
+            <div class="tornado-image">
+                </div>
+            <div class="tornado-content">
+                <div class="tornado-title">Эль-Рино, США <span class="tornado-rating">EF3</span></div>
+                <p class="muted">31 мая 2013 г.</p>
+                <p>Торнадо, изменивший представление о безопасности. <span class="highlight">Установил мировой рекорд по ширине</span> — <span class="highlight">4.2 км</span> (2.6 мили). Из-за дождевой обертки был почти невидим. Имел сложную структуру с множеством суб-вихрей внутри главной воронки. Повлек гибель нескольких известных охотников за штормами.</p>
+                <div class="tornado-stats">
+                    <div class="stat-box"><span class="stat-label">Макс. ширина</span> <span class="stat-value">4.2 км</span></div>
+                    <div class="stat-box"><span class="stat-label">Ветер (до)</span> <span class="stat-value">484 км/ч (DOW)</span></div>
+                    <div class="stat-box"><span class="stat-label">Траектория</span> <span class="stat-value">26 км</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tornado-item">
+            <div class="tornado-image">
+                </div>
+            <div class="tornado-content">
+                <div class="tornado-title">Три-Стейт, США <span class="tornado-rating">F5</span></div>
+                <p class="muted">18 марта 1925 г.</p>
+                <p>Долгожитель-рекордсмен. <span class="highlight">Прошел самую длинную непрерывную траекторию</span> в истории — <span class="highlight">352 км</span> (219 миль). Двигался со скоростью около 100 км/ч. Стер с лица земли более 15 городов в штатах Миссури, Иллинойс и Индиана. <span class="highlight">Самый смертоносный торнадо</span> в истории США (695 погибших).</p>
+                <div class="tornado-stats">
+                    <div class="stat-box"><span class="stat-label">Макс. ширина</span> <span class="stat-value">1.6 км (средн.)</span></div>
+                    <div class="stat-box"><span class="stat-label">Ветер (оценка)</span> <span class="stat-value">>420 км/ч</span></div>
+                    <div class="stat-box"><span class="stat-label">Траектория</span> <span class="stat-value">352 км</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tornado-item">
+            <div class="tornado-image">
+                </div>
+            <div class="tornado-content">
+                <div class="tornado-title">Джоплин, США <span class="tornado-rating">EF5</span></div>
+                <p class="muted">22 мая 2011 г.</p>
+                <p>Пример катастрофы в городской черте. Удар пришелся прямо по густонаселенному городу. <span class="highlight">Стал самым «дорогим» торнадо</span> в истории (ущерб превысил $3 млрд). В считанные минуты уничтожил тысячи домов и медицинский центр. Сила ветра была такова, что парковочные блоки из бетона перелетали на сотни метров.</p>
+                <div class="tornado-stats">
+                    <div class="stat-box"><span class="stat-label">Макс. ширина</span> <span class="stat-value">1.6 км</span></div>
+                    <div class="stat-box"><span class="stat-label">Ветер (до)</span> <span class="stat-value">>322 км/ч</span></div>
+                    <div class="stat-box"><span class="stat-label">Ущерб (до)</span> <span class="stat-value">$3 млрд</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
