@@ -50,7 +50,6 @@
             text-transform: uppercase;
         }
 
-        /* Выделение основного */
         u {
             text-decoration: none;
             border-bottom: 2px solid var(--neon-blue);
@@ -89,7 +88,8 @@
             border-top: 1px solid #333;
         }
 
-        .stat-item b { color: var(--neon-pink); display: block; }
+        .stat-item b { color: var(--neon-pink); display: block; font-size: 1rem; }
+        .stat-item span { color: #888; font-size: 0.8rem; text-transform: uppercase; }
 
         .news-item {
             border-left: 3px solid var(--neon-blue);
@@ -123,46 +123,49 @@
         
         <div class="news-item">
             <span class="news-date">06 МАРТА 2026</span>
-            <h3>Масштабная вспышка в «Аллее торнадо»</h3>
-            <p>В период с 5 по 6 марта зафиксирована серия из <u>24 подтвержденных касаний</u>. Основной удар пришелся на центральные штаты. Метеорологи отмечают аномально высокий индекс CAPE для этого времени года, что привело к формированию долгоживущих суперъячеек.</p>
+            <h3>Вспышка «Торреади»</h3>
+            <p>Зафиксирована серия мощных суперъячеек. Вспышка 5-6 марта привела к возникновению множественных воронок в центральной части страны. Исследователи анализируют данные по <u>интенсивности вращения</u> мезоциклонов.</p>
         </div>
 
         <div class="news-item">
             <span class="news-date">05 МАРТА 2026</span>
-            <h3>Инцидент в Оклахоме</h3>
-            <p>Мощный клиновидный торнадо прошел вблизи Оклахома-Сити. Предварительная оценка ущерба соответствует категории <u>EF3</u>. Радарные данные зафиксировали падение обломков на высоте до 6000 метров, что указывает на экстремальную силу восходящего потока.</p>
+            <h3>Торнадо в Окормахе</h3>
+            <p>Разрушительный вихрь прошел через <u>Окормах</u>. Радарные системы зафиксировали классическую «крючковую» эхо-структуру. Проводится оценка повреждений инфраструктуры и замеры скорости ветра.</p>
         </div>
     </section>
 
     <section>
         <h2>Физические основы</h2>
-        <p>Торнадо образуется при возникновении <u>вертикального градиента температур</u> и сильного <u>сдвига ветра</u>. Ключевым этапом является формирование <u>메зоциклона</u> — вращающегося объема воздуха внутри грозового облака. Когда восходящий поток сужается и ускоряется, воронка опускается к земле, образуя полноценный торнадо.</p>
+        <p>Торнадо образуется при возникновении <u>вертикального градиента температур</u> и сильного <u>сдвига ветра</u>. Ключевым этапом является формирование <u>мезоциклона</u> — вращающегося объема воздуха внутри грозового облака. Когда восходящий поток сужается и ускоряется, воронка опускается к земле, образуя полноценный торнадо.</p>
         
     </section>
 
     <section>
         <h2>Классификация по шкале EF</h2>
         <p>Сила торнадо оценивается по <u>Улучшенной шкале Фудзиты</u>, исходя из нанесенного ущерба:</p>
-        
         <ul>
             <li><u>EF0 - EF1</u>: Слабые повреждения, скорость до 177 км/ч.</li>
             <li><u>EF2 - EF3</u>: Значительный ущерб, срыв крыш, скорость до 266 км/ч.</li>
             <li><u>EF4 - EF5</u>: Полное разрушение строений, скорость свыше 267 км/ч.</li>
         </ul>
+        
     </section>
 
     <section>
         <h2>Реестр экстремальных явлений</h2>
 
         <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/El_Reno_Tornado_31_May_2013.jpg" alt="El Reno Tornado">
+            <img src="https://analisisbluray.wordpress.com/wp-content/uploads/2010/07/9e2394903c36b8559769dfca5969d6d3.png" alt="El Reno Tornado">
             <div class="card-content">
-                <h3>Эль-Рино (2013) — Самый широкий</h3>
-                <p>Торнадо в Эль-Рино официально признан <u>крупнейшим в истории</u>. Его максимальная ширина достигла <u>4.2 км</u>. Внутри основной воронки наблюдались многочисленные <u>суб-вихри</u>, двигавшиеся с огромной скоростью.</p>
+                <h3>Эль-Рино (2013)</h3>
+                <p>Официально признан <u>самым широким</u> в истории. Сложная внутренняя динамика включала в себя <u>множественные суб-вихри</u>.</p>
                 <div class="stats">
-                    <div class="stat-item">Ширина: <b>4.2 км</b></div>
-                    <div class="stat-item">Скорость: <b>484 км/ч</b></div>
-                    <div class="stat-item">Категория: <b>EF3</b></div>
+                    <div class="stat-item"><span>Тип EF</span><b>EF3</b></div>
+                    <div class="stat-item"><span>Скорость</span><b>484 км/ч</b></div>
+                    <div class="stat-item"><span>Форма</span><b>Wedge (Клин)</b></div>
+                    <div class="stat-item"><span>Ущерб</span><b>$40 млн</b></div>
+                    <div class="stat-item"><span>Погибло</span><b>8</b></div>
+                    <div class="stat-item"><span>Ширина</span><b>4.2 км</b></div>
                 </div>
             </div>
         </div>
@@ -170,12 +173,15 @@
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Greensburg_tornado_2007.jpg" alt="Greensburg Tornado">
             <div class="card-content">
-                <h3>Гринсбург (2007) — Тотальная аннигиляция</h3>
-                <p>Этот вихрь стал первым в истории, получившим категорию <u>EF5 по новой шкале</u>. Он практически полностью (на 95%) уничтожил город Гринсбург, штат Канзас. Ширина воронки превышала 2.7 км.</p>
+                <h3>Гринсбург (2007)</h3>
+                <p>Первый торнадо, получивший категорию <u>EF5</u>. Стер с лица земли 95% городского пространства Гринсбурга.</p>
                 <div class="stats">
-                    <div class="stat-item">Ширина: <b>2.7 км</b></div>
-                    <div class="stat-item">Разрушения: <b>95% города</b></div>
-                    <div class="stat-item">Категория: <b>EF5</b></div>
+                    <div class="stat-item"><span>Тип EF</span><b>EF5</b></div>
+                    <div class="stat-item"><span>Скорость</span><b>330 км/ч</b></div>
+                    <div class="stat-item"><span>Форма</span><b>Wedge (Клин)</b></div>
+                    <div class="stat-item"><span>Ущерб</span><b>$250 млн</b></div>
+                    <div class="stat-item"><span>Погибло</span><b>11</b></div>
+                    <div class="stat-item"><span>Ширина</span><b>2.7 км</b></div>
                 </div>
             </div>
         </div>
@@ -183,12 +189,15 @@
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/F5_tornado_May_3_1999.jpg" alt="Bridge Creek-Moore Tornado">
             <div class="card-content">
-                <h3>Бридж-Крик (1999) — Максимальная скорость</h3>
-                <p>В ходе этого события была зафиксирована <u>высочайшая скорость ветра</u> у поверхности Земли — <u>512 км/ч</u>. Торнадо полностью стер с лица земли несколько населенных пунктов, продемонстрировав предел мощности категории EF5.</p>
+                <h3>Бридж-Крик (1999)</h3>
+                <p>Зафиксирована <u>высочайшая скорость ветра</u> у поверхности Земли. Продемонстрировал предел мощности категории F5.</p>
                 <div class="stats">
-                    <div class="stat-item">Скорость ветра: <b>512 км/ч</b></div>
-                    <div class="stat-item">Тип: <b>Клиновидный</b></div>
-                    <div class="stat-item">Категория: <b>EF5</b></div>
+                    <div class="stat-item"><span>Тип EF</span><b>F5</b></div>
+                    <div class="stat-item"><span>Скорость</span><b>512 км/ч</b></div>
+                    <div class="stat-item"><span>Форма</span><b>Wedge (Клин)</b></div>
+                    <div class="stat-item"><span>Ущерб</span><b>$1.1 млрд</b></div>
+                    <div class="stat-item"><span>Погибло</span><b>36</b></div>
+                    <div class="stat-item"><span>Ширина</span><b>1.6 км</b></div>
                 </div>
             </div>
         </div>
@@ -196,25 +205,15 @@
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Tri-State_Tornado_track.png" alt="Tri-State Path">
             <div class="card-content">
-                <h3>Три-Стейт (1925) — Самая длинная траектория</h3>
-                <p>Этот торнадо удерживал контакт с землей в течение <u>3.5 часов</u>, пройдя путь в <u>352 км</u> через три штата. Это абсолютный рекорд <u>непрерывного существования</u> одиночного вихря.</p>
+                <h3>Три-Стейт (1925)</h3>
+                <p>Абсолютный рекорд <u>непрерывного существования</u>. Путь вихря пролегал через территорию трех штатов.</p>
                 <div class="stats">
-                    <div class="stat-item">Путь: <b>352 км</b></div>
-                    <div class="stat-item">Время жизни: <b>219 мин</b></div>
-                    <div class="stat-item">Жертвы: <b>695</b></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Tornado_in_Bangladesh.jpg" alt="Bangladesh Tornado">
-            <div class="card-content">
-                <h3>Бангладеш (1989) — Самый смертоносный</h3>
-                <p>Из-за отсутствия систем оповещения торнадо в районе Даулатпур-Сатурия стал <u>самым трагичным</u>. Погибло около <u>1300 человек</u>, а более 80 тысяч остались без крова.</p>
-                <div class="stats">
-                    <div class="stat-item">Жертвы: <b>~1300</b></div>
-                    <div class="stat-item">Район: <b>Сатурия</b></div>
-                    <div class="stat-item">Статус: <b>Катастрофа</b></div>
+                    <div class="stat-item"><span>Тип EF</span><b>F5</b></div>
+                    <div class="stat-item"><span>Скорость</span><b>420+ км/ч</b></div>
+                    <div class="stat-item"><span>Форма</span><b>Multi-vortex</b></div>
+                    <div class="stat-item"><span>Ущерб</span><b>$1.4 млрд</b></div>
+                    <div class="stat-item"><span>Погибло</span><b>695</b></div>
+                    <div class="stat-item"><span>Ширина</span><b>1.2 км</b></div>
                 </div>
             </div>
         </div>
@@ -222,12 +221,15 @@
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Joplin_tornado_May_22_2011.jpg" alt="Joplin Damage">
             <div class="card-content">
-                <h3>Джоплин (2011) — Самый дорогостоящий</h3>
-                <p>Этот торнадо нанес <u>рекордный экономический ущерб</u> в размере <u>2.8 млрд долларов</u>. Он прошел через центр города, уничтожив более 7000 зданий и современный госпиталь.</p>
+                <h3>Джоплин (2011)</h3>
+                <p>Объект с <u>рекордным экономическим ущербом</u>. Полностью уничтожил центральные кварталы города.</p>
                 <div class="stats">
-                    <div class="stat-item">Ущерб: <b>$2.8 млрд</b></div>
-                    <div class="stat-item">Ширина следа: <b>1.6 км</b></div>
-                    <div class="stat-item">Категория: <b>EF5</b></div>
+                    <div class="stat-item"><span>Тип EF</span><b>EF5</b></div>
+                    <div class="stat-item"><span>Скорость</span><b>322 км/ч</b></div>
+                    <div class="stat-item"><span>Форма</span><b>Rain-wrapped</b></div>
+                    <div class="stat-item"><span>Ущерб</span><b>$2.8 млрд</b></div>
+                    <div class="stat-item"><span>Погибло</span><b>158</b></div>
+                    <div class="stat-item"><span>Ширина</span><b>1.6 км</b></div>
                 </div>
             </div>
         </div>
