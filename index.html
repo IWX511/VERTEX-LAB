@@ -3,234 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VortexLab | Исследование Экстремальных Вихрей</title>
+    <title>VortexLab | База данных</title>
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-panel: #161616;
-            --text-main: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --neon-cyan: #00ffff;
-            --neon-magenta: #ff00ff;
-            --shadow-neon: 0 0 10px rgba(0, 255, 255, 0.7);
+            --bg: #0d0d0d;
+            --panel: #1a1a1a;
+            --neon: #00ffff;
+            --accent: #ff00ff;
+            --text: #ffffff;
+            --text-dim: #b0b0b0;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 900px; margin: 0 auto; }
+        /* МЕНЮ ТРИ ТОЧКИ */
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
 
-        /* HEADER */
-        header {
-            text-align: center;
-            padding: 60px 0;
+        .menu-dots {
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--neon);
+            user-select: none;
+            transition: 0.3s;
+        }
+
+        .menu-dots:hover { text-shadow: 0 0 10px var(--neon); }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: var(--panel);
+            min-width: 220px;
+            border: 1px solid var(--neon);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .menu-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
             border-bottom: 1px solid #333;
-            margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 3em;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: white;
-            text-shadow: var(--shadow-neon);
+        .menu-content a:last-child { border: none; }
+        .menu-content a:hover { background: #222; color: var(--neon); }
+
+        /* КОНТЕНТ */
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+
+        header { text-align: left; margin-bottom: 50px; border-left: 4px solid var(--neon); padding-left: 20px; }
+        h1 { letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        
+        section { margin-bottom: 60px; }
+        h2 { font-size: 1.5rem; color: var(--neon); margin-bottom: 20px; }
+
+        .highlight { border-bottom: 2px solid var(--neon); padding-bottom: 2px; }
+
+        /* КАРТОЧКИ ШКАЛЫ */
+        .scale-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        h1 span { color: var(--neon-cyan); }
-
-        header p { color: var(--text-muted); margin-top: 10px; font-size: 1.1em; }
-
-        /* SECTIONS */
-        section { margin-bottom: 50px; }
-
-        h2 {
-            font-size: 1.8em;
-            color: white;
-            margin-bottom: 25px;
-            border-left: 3px solid var(--neon-magenta);
-            padding-left: 15px;
+        .scale-item {
+            background: var(--panel);
+            padding: 15px;
+            border-radius: 5px;
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
         }
 
-        /* TEXT STYLES */
-        p { margin-bottom: 15px; color: var(--text-main); }
-        .highlight { border-bottom: 2px solid var(--neon-cyan); font-weight: 600; color: white; }
-        .muted { color: var(--text-muted); font-size: 0.9em; }
+        .scale-item b { font-size: 1.2rem; display: block; color: var(--accent); }
 
-        /* CARDS & PANELS */
-        .info-card {
-            background-color: var(--bg-panel);
-            padding: 25px;
+        /* КАРТОЧКИ ТОРНАДО */
+        .tornado-box {
+            background: var(--panel);
             border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            margin-bottom: 20px;
-        }
-
-        /* TORNADO LIST */
-        .tornado-item {
-            display: flex;
-            flex-direction: column;
-            background-color: var(--bg-panel);
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
             margin-bottom: 30px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #222;
         }
 
-        .tornado-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            border-color: var(--neon-cyan);
+        .tornado-img {
+            width: 100%; height: 220px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--neon);
         }
 
-        .tornado-image {
-            width: 100%;
-            height: 250px;
-            background-color: #333;
-            background-image: repeating-linear-gradient(45deg, #2b2b2b, #2b2b2b 10px, #333 10px, #333 20px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            position: relative;
-        }
+        .tornado-info { padding: 20px; }
+        .tornado-info h3 { margin-top: 0; color: var(--neon); }
 
-        /* Имитация картинки (замени на реальные URL) */
-        .tornado-image::after {
-            content: "ФОТО ТОРНАДО (ЗАМЕНИТЬ URL)";
-            position: absolute;
-        }
+        footer { text-align: center; color: #444; font-size: 12px; padding: 40px 0; }
 
-        .tornado-content { padding: 25px; }
-
-        .tornado-title {
-            font-size: 1.5em;
-            color: white;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .tornado-rating {
-            background-color: var(--neon-magenta);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.8em;
-        }
-
-        .tornado-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-            border-top: 1px solid #333;
-            padding-top: 15px;
-        }
-
-        .stat-box { font-size: 0.9em; }
-        .stat-label { color: var(--text-muted); display: block; }
-        .stat-value { color: white; font-weight: 600; }
-
-        /* ADAPTIVE */
-        @media (min-width: 600px) {
-            .tornado-item { flex-direction: row; }
-            .tornado-image { width: 40%; height: auto; }
-            .tornado-content { width: 60%; }
-            .tornado-stats { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2em; }
-        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Vortex<span>Lab</span></h1>
-        <p>Центр прикладных атмосферных исследований</p>
-    </header>
-
-    <section id="about">
-        <h2>О Проекте</h2>
-        <div class="info-card">
-            <p>Добро пожаловать в VortexLab. Мы занимаемся комплексным <span class="highlight">изучением физики экстремальных вихрей</span> и разработкой систем для их моделирования. Проект объединяет аналитику исторических данных и практические эксперименты.</p>
-            <p>В рамках <span class="highlight">версии v0.0.1</span> мы фокусируемся на оптимизации динамики воздушных потоков в симуляционном боксе и подготовке к запуску первой мульти-вихревой установки.</p>
+    <div class="menu-container">
+        <div class="menu-dots" onclick="toggleMenu()">⋮</div>
+        <div class="menu-content" id="menuList">
+            <a href="#main-info">Основная информация</a>
+            <a href="#reference">Справочный материал</a>
+            <a href="#">Классификация (в разработке)</a>
+            <a href="#">Карта наблюдений (в разработке)</a>
         </div>
-    </section>
+    </div>
 
-    <section id="physics">
-        <h2>Физика Торнадо</h2>
-        <div class="info-card">
-            <p>Торнадо — это вертикальный вихрь, <span class="highlight">соединяющий грозовое облако с поверхностью</span> Земли. Его генезис требует уникального сочетания условий.</p>
-            <p>Для формирования <span class="highlight">суперъячейки</span> (мощнейшего типа грозы) необходимы: <span class="highlight">нестабильность атмосферы</span> (быстрое падение температуры с высотой) и сильный <span class="highlight">сдвиг ветра</span> (изменение скорости и направления ветра с высотой).</p>
-            <p>Эти факторы создают горизонтальное вращение, которое затем <span class="highlight">подхватывается восходящим потоком</span> и превращается в вертикальный мезоциклон. Из него, при наличии сильного оттока воздуха, <span class="highlight">опускается воронка</span>.</p>
-        </div>
-    </section>
+    <div class="container">
+        <header id="main-info">
+            <h1>VortexLab <span>DB</span></h1>
+            <p>База данных метеорологических аномалий v0.0.1</p>
+        </header>
 
-    <section id="records">
-        <h2>Реестр Крупнейших Вихрей</h2>
+        <section>
+            <h2>Основная информация</h2>
+            <p>Торнадо (смерч) — это мощный <span class="highlight">атмосферный вихрь</span>, возникающий в кучево-дождевом облаке и распространяющийся вниз до самой поверхности земли. Скорость вращения воздуха внутри воронки может превышать <span class="highlight">500 км/ч</span>.</p>
+            <p>Основной причиной возникновения является столкновение теплого влажного воздуха с холодным сухим, что создает <span class="highlight">сильную нестабильность</span> в атмосфере.</p>
+        </section>
 
-        <div class="tornado-item">
-            <div class="tornado-image">
-                </div>
-            <div class="tornado-content">
-                <div class="tornado-title">Эль-Рино, США <span class="tornado-rating">EF3</span></div>
-                <p class="muted">31 мая 2013 г.</p>
-                <p>Торнадо, изменивший представление о безопасности. <span class="highlight">Установил мировой рекорд по ширине</span> — <span class="highlight">4.2 км</span> (2.6 мили). Из-за дождевой обертки был почти невидим. Имел сложную структуру с множеством суб-вихрей внутри главной воронки. Повлек гибель нескольких известных охотников за штормами.</p>
-                <div class="tornado-stats">
-                    <div class="stat-box"><span class="stat-label">Макс. ширина</span> <span class="stat-value">4.2 км</span></div>
-                    <div class="stat-box"><span class="stat-label">Ветер (до)</span> <span class="stat-value">484 км/ч (DOW)</span></div>
-                    <div class="stat-box"><span class="stat-label">Траектория</span> <span class="stat-value">26 км</span></div>
+        <section id="reference">
+            <h2>Классификация: Улучшенная шкала Фудзиты</h2>
+            <p>Интенсивность торнадо определяется не по размеру, а по <span class="highlight">степени нанесенного ущерба</span>.</p>
+            
+            <div class="scale-grid">
+                <div class="scale-item"><b>EF0</b> 105-137 км/ч</div>
+                <div class="scale-item"><b>EF1</b> 138-177 км/ч</div>
+                <div class="scale-item"><b>EF2</b> 178-217 км/ч</div>
+                <div class="scale-item"><b>EF3</b> 218-266 км/ч</div>
+                <div class="scale-item"><b>EF4</b> 267-322 км/ч</div>
+                <div class="scale-item"><b>EF5</b> >322 км/ч</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Исторические прецеденты</h2>
+
+            <div class="tornado-box">
+                <div class="tornado-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/El_Reno_Tornado_31_May_2013.jpg/1200px-El_Reno_Tornado_31_May_2013.jpg');"></div>
+                <div class="tornado-info">
+                    <h3>El Reno (2013)</h3>
+                    <p><span class="highlight">Самый широкий</span> торнадо в истории. Имел сложную структуру с множеством мелких вихрей (sub-vortices) внутри основной воронки.</p>
                 </div>
             </div>
-        </div>
 
-        <div class="tornado-item">
-            <div class="tornado-image">
-                </div>
-            <div class="tornado-content">
-                <div class="tornado-title">Три-Стейт, США <span class="tornado-rating">F5</span></div>
-                <p class="muted">18 марта 1925 г.</p>
-                <p>Долгожитель-рекордсмен. <span class="highlight">Прошел самую длинную непрерывную траекторию</span> в истории — <span class="highlight">352 км</span> (219 миль). Двигался со скоростью около 100 км/ч. Стер с лица земли более 15 городов в штатах Миссури, Иллинойс и Индиана. <span class="highlight">Самый смертоносный торнадо</span> в истории США (695 погибших).</p>
-                <div class="tornado-stats">
-                    <div class="stat-box"><span class="stat-label">Макс. ширина</span> <span class="stat-value">1.6 км (средн.)</span></div>
-                    <div class="stat-box"><span class="stat-label">Ветер (оценка)</span> <span class="stat-value">>420 км/ч</span></div>
-                    <div class="stat-box"><span class="stat-label">Траектория</span> <span class="stat-value">352 км</span></div>
+            <div class="tornado-box">
+                <div class="tornado-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Joplin_tornado_May_22_2011.jpg');"></div>
+                <div class="tornado-info">
+                    <h3>Joplin (2011)</h3>
+                    <p>Категория <span class="highlight">EF5</span>. Пример максимальной разрушительной силы в городской черте, повлекший колоссальные экономические потери.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="tornado-item">
-            <div class="tornado-image">
-                </div>
-            <div class="tornado-content">
-                <div class="tornado-title">Джоплин, США <span class="tornado-rating">EF5</span></div>
-                <p class="muted">22 мая 2011 г.</p>
-                <p>Пример катастрофы в городской черте. Удар пришелся прямо по густонаселенному городу. <span class="highlight">Стал самым «дорогим» торнадо</span> в истории (ущерб превысил $3 млрд). В считанные минуты уничтожил тысячи домов и медицинский центр. Сила ветра была такова, что парковочные блоки из бетона перелетали на сотни метров.</p>
-                <div class="tornado-stats">
-                    <div class="stat-box"><span class="stat-label">Макс. ширина</span> <span class="stat-value">1.6 км</span></div>
-                    <div class="stat-box"><span class="stat-label">Ветер (до)</span> <span class="stat-value">>322 км/ч</span></div>
-                    <div class="stat-box"><span class="stat-label">Ущерб (до)</span> <span class="stat-value">$3 млрд</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <footer>
+            VORTEXLAB DATABASE SYSTEM &copy; 2026
+        </footer>
+    </div>
 
-</div>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menuList");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
 
+        // Закрыть меню при клике в любом месте
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-dots')) {
+                var dropdowns = document.getElementsByClassName("menu-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "block") {
+                        openDropdown.style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
